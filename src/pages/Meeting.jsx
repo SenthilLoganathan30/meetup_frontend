@@ -70,7 +70,8 @@ export default function Meeting() {
       setStatus('Starting local media...')
       await startLocal()
       setStatus('Connecting to room...')
-      const s = io('http://localhost:3000')
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+      const s = io(backendUrl)
       socketRef.current = s
 
       s.on('connect', () => {
