@@ -1,3 +1,5 @@
+import { io } from 'socket.io-client';
+
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 const backendUrl = isLocalhost ? 'http://localhost:3000' : 'https://meetupbackend-production-a10b.up.railway.app';
 const socket = io(backendUrl);
@@ -232,6 +234,7 @@ function showView(viewId) {
   const target = document.getElementById(viewId);
   if (target) target.classList.add('active');
 }
+window.showView = showView;
 
 document.querySelectorAll('.navToDashboardBtn').forEach(btn => {
   btn.onclick = () => showView('dashboardView');
@@ -1375,6 +1378,8 @@ function renderAgenda() {
 
 function toggleAgendaItem(i) { agendaItems[i].done = !agendaItems[i].done; renderAgenda(); }
 function removeAgendaItem(i) { agendaItems.splice(i, 1); renderAgenda(); }
+window.toggleAgendaItem = toggleAgendaItem;
+window.removeAgendaItem = removeAgendaItem;
 
 if (agendaAddBtn && agendaInput) {
   agendaAddBtn.onclick = () => {
@@ -1422,6 +1427,7 @@ function togglePanel(panelId) {
   });
   panel.classList.toggle('active');
 }
+window.togglePanel = togglePanel;
 
 if (summaryBtn) summaryBtn.onclick = () => togglePanel('summaryPanel');
 const codeEditorBtn = document.getElementById('codeEditorBtn');
