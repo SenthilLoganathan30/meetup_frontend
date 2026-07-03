@@ -1,5 +1,5 @@
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-const backendUrl = isLocalhost ? 'http://localhost:3000' : 'https://meetupapp-production-dd75.up.railway.app';
+const backendUrl = isLocalhost ? 'http://localhost:3000' : 'https://meetupbackend-production-a10b.up.railway.app';
 const socket = io(backendUrl);
 
 // DOM Elements
