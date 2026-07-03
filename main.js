@@ -1,7 +1,9 @@
 import { io } from 'socket.io-client';
 
-const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-const backendUrl = isLocalhost ? 'http://localhost:3000' : 'https://meetupbackend-production-a10b.up.railway.app';
+const backendUrl = isLocalhost 
+  ? 'http://localhost:3000' 
+  : (import.meta.env.VITE_BACKEND_URL || 'https://meetupbackend-production-a10b.up.railway.app');
+console.log('Connecting to backend at:', backendUrl);
 const socket = io(backendUrl);
 
 // DOM Elements
