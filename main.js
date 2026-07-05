@@ -61,6 +61,7 @@ let meetingStartTime = null;
 
 const peers = {}; // peerId -> RTCPeerConnection
 let participants = new Map(); // peerId -> userInfo
+let isHost = false;
 
 // Features State
 let mediaRecorder;
